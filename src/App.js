@@ -9,6 +9,7 @@ Route,
 Link 
 } from 'react-router-dom';
 import Detail from './components/Detail';
+import Login from './components/Login';
 
 
 
@@ -18,7 +19,8 @@ function App() {
       <Router>
           <Header/>
           <Routes>
-            <Route exact path='/detail' element={<Detail/>}/>
+            <Route exact path='/login' element={<Login/>}/>
+            <Route exact path='/detail/:id' element={<Detail/>}/>
             <Route exact path='/' element={<Home/>}/>
           </Routes>
       </Router>

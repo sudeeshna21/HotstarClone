@@ -1,35 +1,26 @@
 import React from 'react';
+import { Link } from "react-router-dom"
 import styled from 'styled-components';
+import { selectMovies } from '../features/movie/movieSlice';
+import { useSelector } from 'react-redux';
 
 function Movies() {
+    const movies = useSelector(selectMovies);
+
+
   return (
     <Container>
         <h4>Recommended for You</h4>
         <Content>
-            <Wrap>
-                <img src="https://i.pinimg.com/564x/7b/b5/3d/7bb53dbcf8429535226f4df3d154213c.jpg"/>
+        {movies && movies.map((movie)=>{
+            return(
+            <Wrap key={movie.id}>
+                <Link to={`/detail/${movie.id}`}>
+                    <img src={movie?.cardImg}/>
+                </Link>
             </Wrap>
-            <Wrap>
-                <img src="https://i.pinimg.com/564x/7b/b5/3d/7bb53dbcf8429535226f4df3d154213c.jpg"/>
-            </Wrap>
-            <Wrap>
-                <img src="https://i.pinimg.com/564x/7b/b5/3d/7bb53dbcf8429535226f4df3d154213c.jpg"/>
-            </Wrap>
-            <Wrap>
-                <img src="https://i.pinimg.com/564x/7b/b5/3d/7bb53dbcf8429535226f4df3d154213c.jpg"/>
-            </Wrap>
-            <Wrap>
-                <img src="https://i.pinimg.com/564x/7b/b5/3d/7bb53dbcf8429535226f4df3d154213c.jpg"/>
-            </Wrap>
-            <Wrap>
-                <img src="https://i.pinimg.com/564x/7b/b5/3d/7bb53dbcf8429535226f4df3d154213c.jpg"/>
-            </Wrap>
-            <Wrap>
-                <img src="https://i.pinimg.com/564x/7b/b5/3d/7bb53dbcf8429535226f4df3d154213c.jpg"/>
-            </Wrap>
-            <Wrap>
-                <img src="https://i.pinimg.com/564x/7b/b5/3d/7bb53dbcf8429535226f4df3d154213c.jpg"/>
-            </Wrap>
+            )
+        })}
         </Content>
     </Container>
   )
